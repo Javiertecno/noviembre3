@@ -1,1 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Correo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: #fff;
+            border-right: 1px solid #dee2e6;
+            height: 100vh;
+            padding: 20px 10px;
+        }
+        .btn-compose {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #0d6efd;
+            color: white;
+            font-weight: 500;
+        }
+        .nav-item {
+            margin-bottom: 5px;
+        }
+        .nav-link {
+            color: #495057;
+            border-radius: 0.25rem;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-link:hover {
+            background-color: #f8f9fa;
+            color: #0d6efd;
+        }
+        .nav-link.active {
+            background-color: #e7f1ff;
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .badge {
+            font-size: 0.75rem;
+        }
+        .email-content {
+            background-color: #fff;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .email-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+        .email-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .email-item {
+            padding: 15px 30px;
+            border-bottom: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .email-item:hover {
+            background-color: #f8f9fa;
+        }
+        .email-item.unread {
+            background-color: #f8f9fa;
+            font-weight: 500;
+        }
+        .email-sender {
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 5px;
+        }
+        .email-subject {
+            color: #212529;
+            margin-bottom: 5px;
+        }
+        .email-preview {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .email-time {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .email-star {
+            color: #ffc107;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar - 4 columnas -->
+            <div class="col-md-4 col-lg-3 sidebar">
+                <button class="btn btn-compose">
+                    <i class="fas fa-pen me-2"></i>Redactar
+                </button>
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span><i class="fas fa-inbox"></i>Bandeja de entrada</span>
+                            <span class="badge bg-primary">12</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fas fa-star"></i>Destacados</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fas fa-paper-plane"></i>Enviados</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fas fa-file-alt"></i>Borradores</span>
+                            <span class="badge bg-secondary">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fas fa-exclamation-circle"></i>Spam</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fas fa-trash"></i>Papelera</span>
+                        </a>
+                    </li>
+                </ul>
 
+                <hr class="my-3">
+
+                <div class="px-3">
+                    <h6 class="text-muted small mb-2">ETIQUETAS</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link py-2" href="#">
+                                <span><i class="fas fa-circle text-success"></i>Trabajo</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-2" href="#">
+                                <span><i class="fas fa-circle text-danger"></i>Personal</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-2" href="#">
+                                <span><i class="fas fa-circle text-warning"></i>Importante</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Área de contenido - 8 columnas -->
+            <div class="col-md-8 col-lg-9 p-0 email-content">
+                <div class="email-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Bandeja de entrada</h4>
+                        <div>
+                            <button class="btn btn-outline-secondary btn-sm me-2">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="email-list">
+                    <li class="email-item unread">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">María González</div>
+                                <div class="email-subject">Reunión del proyecto - Actualización importante</div>
+                                <div class="email-preview">Hola, necesito comentar contigo algunos puntos sobre el proyecto...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">10:30 AM</div>
+                                <i class="fas fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="email-item unread">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">Carlos Ruiz</div>
+                                <div class="email-subject">RE: Propuesta de diseño</div>
+                                <div class="email-preview">Me parece excelente tu propuesta. Podemos discutir los detalles...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">9:15 AM</div>
+                                <i class="far fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="email-item">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">Soporte Técnico</div>
+                                <div class="email-subject">Tu ticket #12345 ha sido resuelto</div>
+                                <div class="email-preview">Nos complace informarte que tu solicitud ha sido procesada correctamente...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">Ayer</div>
+                                <i class="far fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="email-item">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">Newsletter Tech</div>
+                                <div class="email-subject">Las últimas novedades en tecnología</div>
+                                <div class="email-preview">Esta semana: nuevas tendencias en desarrollo web, IA y más...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">Ayer</div>
+                                <i class="far fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="email-item">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">Ana Martínez</div>
+                                <div class="email-subject">Documentación del proyecto</div>
+                                <div class="email-preview">Adjunto encontrarás la documentación actualizada que me solicitaste...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">2 días</div>
+                                <i class="fas fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="email-item">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="email-sender">LinkedIn</div>
+                                <div class="email-subject">Tienes 5 nuevas notificaciones</div>
+                                <div class="email-preview">Tu perfil ha recibido nuevas visitas y conexiones esta semana...</div>
+                            </div>
+                            <div class="text-end ms-3">
+                                <div class="email-time">3 días</div>
+                                <i class="far fa-star email-star"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Funcionalidad para marcar/desmarcar estrellas
+        document.querySelectorAll('.email-star').forEach(star => {
+            star.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('fas');
+                this.classList.toggle('far');
+            });
+        });
+
+        // Funcionalidad para seleccionar emails
+        document.querySelectorAll('.email-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.email-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                this.classList.remove('unread');
+            });
+        });
+    </script>
+</body>
+</html>
