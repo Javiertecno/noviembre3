@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Correo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: #fff;
+            border-right: 1px solid #dee2e6;
+            min-height: 100vh;
+        }
+        .btn-compose {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .nav-link {
+            color: #495057;
+        }
+        .nav-link:hover {
+            background-color: #f8f9fa;
+            color: #0d6efd;
+        }
+        .nav-link.active {
+            background-color: #e7f1ff;
+            color: #0d6efd;
+        }
+        .email-content {
+            background-color: #fff;
+        }
+        .email-item {
+            border-bottom: 1px solid #dee2e6;
+            cursor: pointer;
+        }
+        .email-item:hover {
+            background-color: #f8f9fa;
+        }
+        .email-item.unread {
+            background-color: #f8f9fa;
+        }
+        .email-star {
+            color: #ffc107;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar - 4 columnas -->
+            <div class="col-4 sidebar p-3">
+                <button class="btn btn-compose w-100 mb-3">
+                    <i class="fas fa-pen me-2"></i>Redactar
+                </button>
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active d-flex justify-content-between align-items-center" href="#">
+                            <span><i class="fas fa-inbox me-2"></i>Bandeja de entrada</span>
+                            <span class="badge bg-primary">12</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-star me-2"></i>Destacados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-paper-plane me-2"></i>Enviados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex justify-content-between align-items-center" href="#">
+                            <span><i class="fas fa-file-alt me-2"></i>Borradores</span>
+                            <span class="badge bg-secondary">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-exclamation-circle me-2"></i>Spam
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-trash me-2"></i>Papelera
+                        </a>
+                    </li>
+                </ul>
 
+                <hr>
+
+                <h6 class="text-muted small mb-2">ETIQUETAS</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-circle text-success me-2"></i>Trabajo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-circle text-danger me-2"></i>Personal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="fas fa-circle text-warning me-2"></i>Importante
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Área de contenido - 8 columnas -->
+            <div class="col-8 p-0 email-content">
+                <div class="p-3 border-bottom">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Bandeja de entrada</h4>
+                        <div>
+                            <button class="btn btn-outline-secondary btn-sm me-2">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-item unread p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">María González</div>
+                            <div>Reunión del proyecto - Actualización importante</div>
+                            <div class="text-muted small">Hola, necesito comentar contigo algunos puntos sobre el proyecto...</div>
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="small text-muted">10:30 AM</div>
+                            <i class="fas fa-star email-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-item unread p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Carlos Ruiz</div>
+                            <div>RE: Propuesta de diseño</div>
+                            <div class="text-muted small">Me parece excelente tu propuesta. Podemos discutir los detalles...</div>
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="small text-muted">9:15 AM</div>
+                            <i class="far fa-star email-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-item p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Soporte Técnico</div>
+                            <div>Tu ticket #12345 ha sido resuelto</div>
+                            <div class="text-muted small">Nos complace informarte que tu solicitud ha sido procesada correctamente...</div>
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="small text-muted">Ayer</div>
+                            <i class="far fa-star email-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-item p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Newsletter Tech</div>
+                            <div>Las últimas novedades en tecnología</div>
+                            <div class="text-muted small">Esta semana: nuevas tendencias en desarrollo web, IA y más...</div>
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="small text-muted">Ayer</div>
+                            <i class="far fa-star email-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-item p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Ana Martínez</div>
+                            <div>Documentación del proyecto</div>
+                            <div class="text-muted small">Adjunto encontrarás la documentación actualizada que me solicitaste...</div>
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="small text-muted">2 días</div>
